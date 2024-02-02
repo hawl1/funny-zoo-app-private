@@ -1,18 +1,34 @@
-<head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+<!DOCTYPE html>
+<html lang="en">
 
-<body>
-    <div class="App">
-        <header class="App-header">
-            <img src="{{ url_for('static', filename='Octocat.png') }}" class="App-logo" alt="logo" />
-            <p>
-                GitHub Codespaces <span class="heart">♥️</span> Flask
-            </p>
-            <p class="small">
-                Edit <code>templates/index.html</code> and refresh to see your changes!
-            </p>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+
+<body class="bg-dark">
+    {% include 'navbar.html' %}
+    <div class="container my-4">
+        <table class="table table-striped table-white">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Animal Name</th>
+                    <th scope="col">Animal Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for animal in animals %}
+                    <tr>
+                        <th scope="row">{{ animal.id }}</th>
+                        <td>{{ animal.name }}</td>
+                        <td>{{ animal.gender }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </body>
 
